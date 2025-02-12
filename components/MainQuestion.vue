@@ -5,8 +5,10 @@
       <div v-if="!loaded" class="image-placeholder text-center">
         ⏳ Загрузка...
       </div>
+      <ClientOnly>
+
       <Transition name="fade" appear>
-        <NuxtImg
+        <img
           :src="questionImg"
           class="img-fluid question-image"
           @load="loaded = true"
@@ -14,6 +16,7 @@
           alt=""
         />
       </Transition>
+      </ClientOnly>
       <div v-if="!cookieAnswer" class="buttons">
         <button class="mx-2 button-yes" @click="handleAnswer('да')">Да!</button>
         <button class="mx-2 button-no" @click="handleAnswer('нет')">
